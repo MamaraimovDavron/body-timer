@@ -37,11 +37,14 @@ const getGradient = () => {
   return color;
 };
 
+const timerId = setInterval(myFunction, 1000);
 startBtn.addEventListener("click", () => {
-  setInterval(myFunction, 1000);
+  timerId();
 });
 
-stopBtn.addEventListener("click", clearInterval(setInterval(myFunction, 1000)));
+stopBtn.addEventListener("click", () => {
+  clearInterval(timerId);
+});
 
 function myFunction() {
   second++;
