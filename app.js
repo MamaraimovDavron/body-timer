@@ -37,28 +37,55 @@ const getGradient = () => {
   return color;
 };
 
-const timerId = setInterval(myFunction, 1000);
+// const timerId = setInterval(() => {
+//   second++;
+//   timerHeader.innerHTML = second;
+
+//   const color1 = getGradient();
+//   const color2 = getGradient();
+
+//   if (second % 10 == 0) {
+//     timer.style.background = `linear-gradient(${degree}deg, ${color2}, ${color1})`;
+//   }
+
+//   body.style.background = `linear-gradient(${degree}deg, ${color1}, ${color2})`;
+// }, 1000);
+
+let setIntervalFunction;
+
 startBtn.addEventListener("click", () => {
-  timerId();
+  setIntervalFunction = setInterval(() => {
+    second++;
+    timerHeader.innerHTML = second;
+
+    const color1 = getGradient();
+    const color2 = getGradient();
+
+    if (second % 10 == 0) {
+      timer.style.background = `linear-gradient(${degree}deg, ${color2}, ${color1})`;
+    }
+
+    body.style.background = `linear-gradient(${degree}deg, ${color1}, ${color2})`;
+  }, 1000);
 });
+
+// function myFunction() {
+//   second++;
+//   timerHeader.innerHTML = second;
+
+//   const color1 = getGradient();
+//   const color2 = getGradient();
+
+//   if (second % 10 == 0) {
+//     timer.style.background = `linear-gradient(${degree}deg, ${color2}, ${color1})`;
+//   }
+
+//   body.style.background = `linear-gradient(${degree}deg, ${color1}, ${color2})`;
+// }
 
 stopBtn.addEventListener("click", () => {
-  clearInterval(timerId);
+  clearInterval(setIntervalFunction);
 });
-
-function myFunction() {
-  second++;
-  timerHeader.innerHTML = second;
-
-  const color1 = getGradient();
-  const color2 = getGradient();
-
-  if (second % 10 == 0) {
-    timer.style.background = `linear-gradient(${degree}deg, ${color2}, ${color1})`;
-  }
-
-  body.style.background = `linear-gradient(${degree}deg, ${color1}, ${color2})`;
-}
 
 // const setIntervalFunction = setInterval(myFunction, 1000);
 // console.log(setIntervalFunction);
